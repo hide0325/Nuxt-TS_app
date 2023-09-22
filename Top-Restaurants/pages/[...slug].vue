@@ -5,6 +5,7 @@
         <template #header>
           <h1>Page not found</h1>
         </template>
+
         <template #redirectEl>
           <NuxtLink to="/">Go Back</NuxtLink>
         </template>
