@@ -3,7 +3,18 @@ import restaurants from "@/data.json";
 
 const route = useRoute();
 const name = route.params.name;
+
 const restaurant = restaurants.find((r) => r.name === name);
+
+useHead({
+  title: restaurant ? restaurant.name : "404 - Restaurant Not Found",
+  meta: [
+    {
+      name: "viewport",
+      content: "width=devise-width",
+    },
+  ],
+});
 </script>
 
 <template>
@@ -27,7 +38,8 @@ const restaurant = restaurants.find((r) => r.name === name);
         </div>
       </div>
     </NuxtLayout>
-    <div v-else class="restaurant-not-found">
+
+    <div class="restaurant-not-found" v-else>
       <NuxtLayout name="error">
         <template #header>
           <h1>Restaurant not found</h1>
@@ -63,6 +75,7 @@ const restaurant = restaurants.find((r) => r.name === name);
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .info-container {
   padding: 3rem;
